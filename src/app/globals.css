@@ -1,0 +1,229 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 210 40% 98%;
+  --foreground: 222 47% 11%;
+  --card: 0 0% 100%;
+  --card-foreground: 222 47% 11%;
+  --primary: 173 80% 28%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 199 89% 94%;
+  --secondary-foreground: 201 96% 22%;
+  --muted: 210 40% 94%;
+  --muted-foreground: 215 18% 38%;
+  --accent: 43 96% 90%;
+  --accent-foreground: 33 82% 22%;
+  --destructive: 0 72% 51%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 214 32% 88%;
+  --input: 214 32% 88%;
+  --ring: 173 80% 28%;
+}
+
+.dark {
+  --background: 222 47% 8%;
+  --foreground: 210 40% 96%;
+  --card: 222 42% 12%;
+  --card-foreground: 210 40% 96%;
+  --primary: 172 66% 50%;
+  --primary-foreground: 222 47% 8%;
+  --secondary: 215 28% 18%;
+  --secondary-foreground: 210 40% 96%;
+  --muted: 215 28% 17%;
+  --muted-foreground: 217 16% 72%;
+  --accent: 43 74% 22%;
+  --accent-foreground: 43 96% 90%;
+  --destructive: 0 70% 48%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 215 24% 22%;
+  --input: 215 24% 22%;
+  --ring: 172 66% 50%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.invoice-print {
+  display: none;
+}
+
+@media print {
+  @page {
+    size: auto;
+    margin: 8mm;
+  }
+
+  body {
+    background: white;
+  }
+
+  .app-shell {
+    display: none !important;
+  }
+
+  .invoice-print {
+    display: block;
+    color: #111827;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    line-height: 1.35;
+    width: 100%;
+    max-width: 190mm;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .print-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    border-bottom: 1px solid #d1d5db;
+    padding-bottom: 12px;
+  }
+
+  .print-logo {
+    max-height: 54px;
+    max-width: 96px;
+    object-fit: contain;
+    margin-bottom: 6px;
+  }
+
+  .invoice-print h1 {
+    color: #047857;
+    font-size: 24px;
+    line-height: 1.15;
+    margin: 0 0 6px;
+  }
+
+  .invoice-print h2 {
+    font-size: 18px;
+    margin: 0 0 8px;
+  }
+
+  .invoice-print p {
+    margin: 4px 0;
+  }
+
+  .print-meta {
+    min-width: 170px;
+    text-align: right;
+  }
+
+  .print-customer {
+    margin-top: 16px;
+  }
+
+  .invoice-print table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+    page-break-inside: auto;
+  }
+
+  .invoice-print th,
+  .invoice-print td {
+    border: 1px solid #d1d5db;
+    padding: 7px;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .invoice-print th {
+    background: #ecfdf5;
+    color: #047857;
+  }
+
+  .print-summary {
+    width: 280px;
+    margin-left: auto;
+    margin-top: 14px;
+  }
+
+  .print-summary p {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .print-grand-total {
+    border-top: 1px solid #111827;
+    padding-top: 8px;
+    font-size: 16px;
+  }
+
+  .print-footer {
+    margin-top: 28px !important;
+    text-align: center;
+    font-weight: 700;
+    color: #047857;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+}
+
+@media print and (max-width: 90mm) {
+  @page {
+    margin: 4mm;
+  }
+
+  .invoice-print {
+    max-width: 72mm;
+    font-size: 10px;
+  }
+
+  .print-header {
+    display: block;
+    text-align: center;
+  }
+
+  .print-meta {
+    min-width: 0;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .invoice-print h1 {
+    font-size: 16px;
+  }
+
+  .invoice-print h2 {
+    font-size: 14px;
+  }
+
+  .invoice-print th,
+  .invoice-print td {
+    padding: 4px 2px;
+    word-break: break-word;
+  }
+
+  .print-summary {
+    width: 100%;
+  }
+
+  .print-grand-total {
+    font-size: 13px;
+  }
+}
